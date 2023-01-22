@@ -16,6 +16,8 @@ jobs:
           npm install
           npm run lint:js
           npm run build
+        env:
+          REACT_APP_MOVIE_DATABASE: ${{ secrets.REACT_APP_MOVIE_DATABASE }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
