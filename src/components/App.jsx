@@ -12,7 +12,7 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 // Pages
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
-const MovieDetails = lazy(() => import('../pages/MovieDetails'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
 
 export const App = () => {
   return (

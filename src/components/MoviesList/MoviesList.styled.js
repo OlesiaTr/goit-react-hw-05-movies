@@ -8,6 +8,15 @@ export const Container = styled.ul`
   gap: 20px;
 `;
 
-export const Poster = styled.div`
-  width: 200px;
+export const CardWrapper = styled.li`
+  border-radius: 4px;
+  > a {
+    text-decoration: none;
+  }
+`;
+
+export const MovieName = styled.h3`
+  padding: 4px;
+  margin-top: 8px;
+  margin-bottom: 0;
 `;
