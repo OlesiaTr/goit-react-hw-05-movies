@@ -12,7 +12,7 @@ import { getReviewsInfo } from 'services/movieDatabaseAPI';
 import { Loader } from 'components/Loader';
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState('');
+  const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -23,7 +23,7 @@ const Reviews = () => {
       try {
         setLoading(true);
         setError('');
-        const { results } = await getReviewsInfo(movieId);
+        const results = await getReviewsInfo(movieId);
         setReviews(results);
         setLoading(false);
       } catch {
@@ -52,6 +52,13 @@ const Reviews = () => {
             <p>{content}</p>
           </div>
         ))}
+
+      {reviews.length === 0 && (
+        <h3 style={{ fontWeight: 'bold', marginBottom: '5px' }}>
+          {' '}
+          Sorry, no reviews yet
+        </h3>
+      )}
 
       <Toaster position="top-right" />
     </>

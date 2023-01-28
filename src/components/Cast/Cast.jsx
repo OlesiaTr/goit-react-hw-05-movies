@@ -13,7 +13,6 @@ import { Loader } from 'components/Loader';
 
 // Styles
 import { Container, Poster } from './Cast.styled';
-import { posterTemplate } from 'services/posterTemplate';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -32,7 +31,7 @@ const Cast = () => {
       try {
         setLoading(true);
         setError('');
-        const { cast } = await getCastInfo(movieId);
+        const cast = await getCastInfo(movieId);
         setCast(cast);
         setLoading(false);
       } catch {
@@ -47,14 +46,12 @@ const Cast = () => {
     <>
       {loading && <Loader />}
       <Container>
-        {cast.map(({ original_name, id, profile_path, character }) => (
+        {cast.map(({ name, id, poster, character }) => (
           <li key={id}>
             <Poster>
-              <img src={posterTemplate(profile_path)} alt={original_name} />
+              <img src={poster} alt={name} />
             </Poster>
-            <p style={{ fontWeight: 'bold', marginBottom: '5px' }}>
-              {original_name}
-            </p>
+            <p style={{ fontWeight: 'bold', marginBottom: '5px' }}>{name}</p>
             <p>Character: {character}</p>
           </li>
         ))}

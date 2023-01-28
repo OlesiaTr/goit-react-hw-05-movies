@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 
 // Utils
 import PropTypes from 'prop-types';
-import { posterTemplate } from 'services/posterTemplate';
 
 // Styles
 import { Container, CardWrapper, MovieName } from './MoviesList.styled';
@@ -13,14 +12,11 @@ export const MoviesList = ({ data }) => {
 
   return (
     <Container>
-      {data.map(({ id, original_title, poster_path, name }) => (
+      {data.map(({ id, title, poster }) => (
         <CardWrapper key={id}>
           <Link to={`/movies/${id}`} state={{ from: location }}>
-            <img
-              src={posterTemplate(poster_path)}
-              alt={original_title ?? name}
-            />
-            <MovieName>{original_title ?? name}</MovieName>
+            <img src={poster} alt={title} />
+            <MovieName>{title}</MovieName>
           </Link>
         </CardWrapper>
       ))}

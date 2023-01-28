@@ -34,9 +34,9 @@ const Movies = () => {
         setLoading(true);
         setError('');
         const data = await getMovieByName(movieName);
-        setMovies(data.results);
+        setMovies(data);
         setLoading(false);
-        if (data.results.length < 1)
+        if (data.length < 1)
           setError(
             'Sorry, we didn`t find any movies according to your request.'
           );
