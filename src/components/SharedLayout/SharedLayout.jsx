@@ -1,13 +1,9 @@
 // Core
 import { Suspense } from 'react';
-
-// Utils
 import { Outlet } from 'react-router-dom';
 
 // Styles
-import { Header, Logo, StyledLink } from './SharedLayout.styled';
-import { Layout } from 'components/Layout';
-import { GlobalStyle } from 'components/GlobalStyle';
+import { Layout, Header, Logo, StyledLink } from './SharedLayout.styled';
 
 export const SharedLayout = () => {
   return (
@@ -30,8 +26,6 @@ export const SharedLayout = () => {
       <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />
       </Suspense>
-
-      <GlobalStyle />
     </Layout>
   );
 };

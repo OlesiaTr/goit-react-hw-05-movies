@@ -1,8 +1,8 @@
 // Core
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 // Utils
-import { useParams } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 
 // API

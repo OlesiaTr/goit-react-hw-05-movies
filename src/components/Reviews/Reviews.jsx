@@ -1,9 +1,9 @@
 // Core
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 // Utils
 import { toast, Toaster } from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
 
 // API
 import { getReviewsInfo } from 'services/movieDatabaseAPI';

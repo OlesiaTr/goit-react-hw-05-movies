@@ -14,14 +14,14 @@ const params = {
 // HTTP requests
 export const getTrendingMovies = async () => {
   const { data } = await axios.get('/trending/movie/day?', { params });
-  return normalisedData(data.results);
+  return normalizedData(data.results);
 };
 
 export const getMovieByName = async query => {
   const { data } = await axios.get('/search/movie?', {
     params: { query, ...params },
   });
-  return normalisedData(data.results);
+  return normalizedData(data.results);
 };
 
 export const getPrimaryInfo = async movieId => {
@@ -58,7 +58,7 @@ export const getReviewsInfo = async id => {
   return data.results;
 };
 
-const normalisedData = movies =>
+const normalizedData = movies =>
   movies.map(
     ({
       id,

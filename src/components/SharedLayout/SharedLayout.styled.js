@@ -4,6 +4,12 @@ import { NavLink } from 'react-router-dom';
 // Utils
 import styled from 'styled-components';
 
+export const Layout = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+`;
+
 export const Header = styled.header`
   display: flex;
   align-items: center;
