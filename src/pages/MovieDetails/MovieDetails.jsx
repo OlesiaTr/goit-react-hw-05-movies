@@ -1,8 +1,6 @@
 // Core
 import { useState, useEffect, Suspense } from 'react';
 import { useParams, useLocation, Outlet } from 'react-router-dom';
-
-// Utils
 import { toast, Toaster } from 'react-hot-toast';
 
 // API
@@ -54,17 +52,21 @@ const MovieDetails = () => {
         <BackLink to={backLinkHref}>Back to movies list</BackLink>
       )}
 
-      {!error && !loading && <MovieInfo movie={movie} />}
+      {!error && !loading && movie && <MovieInfo movie={movie} />}
 
       {!error && !loading && (
         <SubPageWrapper>
           <h2>Additional Information:</h2>
           <ul>
             <li>
-              <StyledLink to="cast">Learn more about the cast</StyledLink>
+              <StyledLink to="cast" state={{ from: backLinkHref }}>
+                Learn more about the cast
+              </StyledLink>
             </li>
             <li>
-              <StyledLink to="reviews">Go through the reviews</StyledLink>
+              <StyledLink to="reviews" state={{ from: backLinkHref }}>
+                Go through the reviews
+              </StyledLink>
             </li>
           </ul>
           <Suspense fallback={<div>Loading subpage...</div>}>

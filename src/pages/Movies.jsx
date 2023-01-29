@@ -1,8 +1,6 @@
 // Core
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
-// Utils
 import { toast, Toaster } from 'react-hot-toast';
 
 // API
@@ -18,7 +16,7 @@ const Movies = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const movieName = searchParams.get('name') ?? '';
 
   useEffect(() => {
@@ -48,17 +46,12 @@ const Movies = () => {
     getMovies();
   }, [movieName]);
 
-  const updateQueryString = name => {
-    const nextParams = name !== '' ? { name } : {};
-    setSearchParams(nextParams);
-  };
-
   return (
     <main>
       {loading && <Loader />}
 
-      <SearchBox value={movieName} onChange={updateQueryString} />
-      {movies && <MoviesList data={movies} />}
+      <SearchBox />
+      {movies.length > 0 && <MoviesList data={movies} />}
 
       <Toaster position="top-right" />
     </main>

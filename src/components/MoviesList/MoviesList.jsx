@@ -1,7 +1,5 @@
 // Core
 import { Link, useLocation } from 'react-router-dom';
-
-// Utils
 import PropTypes from 'prop-types';
 
 // Styles

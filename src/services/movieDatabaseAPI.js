@@ -6,7 +6,7 @@ import { posterTemplate } from './posterTemplate';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 const params = {
-  api_key: `${process.env.REACT_APP_MOVIE_DATABASE}`,
+  api_key: process.env.REACT_APP_MOVIE_DATABASE,
   language: 'en-US',
   include_adult: false,
 };

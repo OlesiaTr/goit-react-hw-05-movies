@@ -1,8 +1,6 @@
 // Core
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-// Utils
 import { BrowserRouter } from 'react-router-dom';
 
 // Components

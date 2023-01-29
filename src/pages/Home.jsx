@@ -1,7 +1,5 @@
 // Core
 import { useState, useEffect } from 'react';
-
-// Utils
 import { toast, Toaster } from 'react-hot-toast';
 
 // API
