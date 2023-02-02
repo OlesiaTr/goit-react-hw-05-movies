@@ -35,18 +35,17 @@ const Home = () => {
     toast.error(error);
   }, [error]);
 
+  if (loading) return <Loader />;
+  if (error) return <Toaster position="top-right" />;
+
   return (
-    <main>
+    <>
       <h1 style={{ textAlign: 'center', marginBottom: '10px' }}>
         Trending movies today
       </h1>
 
-      {loading && <Loader />}
-
       {trending && <MoviesList data={trending} />}
-
-      <Toaster position="top-right" />
-    </main>
+    </>
   );
 };
 

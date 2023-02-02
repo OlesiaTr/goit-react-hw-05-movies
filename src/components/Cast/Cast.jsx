@@ -43,16 +43,25 @@ const Cast = () => {
   return (
     <>
       {loading && <Loader />}
+
+      {cast.length === 0 && (
+        <h3 style={{ fontWeight: 'bold', marginBottom: '5px' }}>
+          {' '}
+          Sorry, no information about the cast yet
+        </h3>
+      )}
+
       <Container>
-        {cast.map(({ name, id, poster, character }) => (
-          <li key={id}>
-            <Poster>
-              <img src={poster} alt={name} />
-            </Poster>
-            <p style={{ fontWeight: 'bold', marginBottom: '5px' }}>{name}</p>
-            <p>Character: {character}</p>
-          </li>
-        ))}
+        {cast.length > 0 &&
+          cast.map(({ name, id, poster, character }) => (
+            <li key={id}>
+              <Poster>
+                <img src={poster} alt={name} />
+              </Poster>
+              <p style={{ fontWeight: 'bold', marginBottom: '5px' }}>{name}</p>
+              <p>Character: {character}</p>
+            </li>
+          ))}
       </Container>
 
       <Toaster position="top-right" />

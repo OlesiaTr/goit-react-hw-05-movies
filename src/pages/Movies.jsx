@@ -46,15 +46,21 @@ const Movies = () => {
     getMovies();
   }, [movieName]);
 
-  return (
-    <main>
-      {loading && <Loader />}
+  if (loading) return <Loader />;
 
+  if (error)
+    return (
+      <>
+        <SearchBox />
+        <Toaster position="top-right" />;
+      </>
+    );
+
+  return (
+    <>
       <SearchBox />
       {movies.length > 0 && <MoviesList data={movies} />}
-
-      <Toaster position="top-right" />
-    </main>
+    </>
   );
 };
 

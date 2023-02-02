@@ -15,7 +15,7 @@ import { MovieInfo } from 'components/MovieInfo';
 import { SubPageWrapper, StyledLink } from './MovieDetails.styled';
 
 const MovieDetails = () => {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -44,39 +44,34 @@ const MovieDetails = () => {
     getMovie();
   }, [movieId]);
 
+  if (loading) return <Loader />;
+  if (error) return <Toaster position="top-right" />;
+
   return (
-    <main>
-      {loading && <Loader />}
+    <>
+      <BackLink to={backLinkHref}>Back to movies list</BackLink>
 
-      {!error && !loading && (
-        <BackLink to={backLinkHref}>Back to movies list</BackLink>
-      )}
+      {movie && <MovieInfo movie={movie} />}
 
-      {!error && !loading && movie && <MovieInfo movie={movie} />}
-
-      {!error && !loading && (
-        <SubPageWrapper>
-          <h2>Additional Information:</h2>
-          <ul>
-            <li>
-              <StyledLink to="cast" state={{ from: backLinkHref }}>
-                Learn more about the cast
-              </StyledLink>
-            </li>
-            <li>
-              <StyledLink to="reviews" state={{ from: backLinkHref }}>
-                Go through the reviews
-              </StyledLink>
-            </li>
-          </ul>
-          <Suspense fallback={<div>Loading subpage...</div>}>
-            <Outlet />
-          </Suspense>
-        </SubPageWrapper>
-      )}
-
-      <Toaster position="top-right" />
-    </main>
+      <SubPageWrapper>
+        <h2>Additional Information:</h2>
+        <ul>
+          <li>
+            <StyledLink to="cast" state={{ from: backLinkHref }}>
+              Learn more about the cast
+            </StyledLink>
+          </li>
+          <li>
+            <StyledLink to="reviews" state={{ from: backLinkHref }}>
+              Go through the reviews
+            </StyledLink>
+          </li>
+        </ul>
+        <Suspense fallback={<div>Loading subpage...</div>}>
+          <Outlet />
+        </Suspense>
+      </SubPageWrapper>
+    </>
   );
 };
 

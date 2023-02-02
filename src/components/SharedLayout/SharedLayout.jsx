@@ -23,9 +23,11 @@ export const SharedLayout = () => {
         </nav>
       </Header>
 
-      <Suspense fallback={<div>Loading page...</div>}>
-        <Outlet />
-      </Suspense>
+      <main>
+        <Suspense fallback={<div>Loading page...</div>}>
+          <Outlet />
+        </Suspense>
+      </main>
     </Layout>
   );
 };
